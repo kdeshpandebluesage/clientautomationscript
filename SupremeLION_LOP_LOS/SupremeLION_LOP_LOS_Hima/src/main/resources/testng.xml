@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="methods" thread-count="27">
+    <listeners>
+        <listener class-name="com.listeners.ExtentReportListener" />
+    </listeners>
+    <test name="QA Loans">
+        <classes>
+<!--            <class name="com.test.TwoBorr_1_Refinance_WilliamSBrennan_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_2_Refinance_RichardJCoss_LIONLOPLOS_Supreme"/>-->
+            <class name="com.test.TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_4_Purchase_MarjoryRFranks_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_5_Purchase_RachelBMonson_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_6_Purchase_SonjaLWelch_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_7_Purchase_JillRDiamond_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_8_Purchase_SaulCFreeman_LIONLOPLOS_Supreme"/>
+<!--            <class name="com.test.TwoBorr_9_Refinance_EugeneFKillion_LIONLOPLOS_Supreme"/>-->
+            <class name="com.test.TwoBorr_10_Purchase_MabelGCarter_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_11_Purchase_TracyJFowler_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_12_Purchase_ElsieJPortugal_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_13_Purchase_DamienBNettles_LIONLOPLOS_Supreme"/>
+<!--            <class name="com.test.TwoBorr_14_Refinance_LaceyJTurner_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_15_Refinance_JeffPMartin_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_16_Refinance_WilliamEBentz_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_17_Refinance_MonicaKJackson_LIONLOPLOS_Supreme"/>-->
+            <class name="com.test.TwoBorr_18_Purchase_LenaJWren_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_19_Purchase_BarbaraJRodriguez_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_20_Purchase_ChristopherBYung_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_21_Purchase_LuciusTEdge_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_22_Purchase_JosephJHenry_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_23_Purchase_DianeWWarkentin_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_24_Purchase_JamesSRamos_LIONLOPLOS_Supreme"/>
+            <class name="com.test.TwoBorr_25_Purchase_JeromeUMilner_LIONLOPLOS_Supreme"/>
+<!--            <class name="com.test.TwoBorr_26_Refinance_MariselaDOleary_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_27_Refinance_EnriqueNWest_LIONLOPLOS_Supreme"/>-->
+        </classes>
+    </test>
+</suite>
