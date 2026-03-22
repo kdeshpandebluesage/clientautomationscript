@@ -13,6 +13,7 @@ public class LoanPurposeSUPPage extends BaseClass {
     public void loanpurposeform(String LoanPurposePhoneNumber) throws IOException {
         page.waitForTimeout(6000);
         page.locator("ion-segment-button[value='Purchase']").click();
+
         page.click("(//ion-segment-button[text()='Yes'])");
         page.locator("//input[@name='phoneNumber']").click();
         page.fill("input[name='phoneNumber']",  LoanPurposePhoneNumber);

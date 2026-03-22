@@ -2,8 +2,8 @@ package com.pages;
 
 import java.io.IOException;
 
-public class ApplicationInfoSUPPage extends BaseClass {
-    public ApplicationInfoSUPPage(com.microsoft.playwright.Page page) {
+public class ApplicationInfo3RiversPage extends BaseClass {
+    public ApplicationInfo3RiversPage(com.microsoft.playwright.Page page) {
         super(page);
     }
 
@@ -19,8 +19,8 @@ public class ApplicationInfoSUPPage extends BaseClass {
         );
 
         enterText(page,"input[name='birthDate']",ApplicationInfo2BrPrimaryApplicantBOD);
-//
-//        page.click("(//ion-segment-button[text()='No'])[2]");
+//        page.fill("input[name='birthDate']", AppFirstBRBOD);
+        page.click("(//ion-segment-button[text()='No'])[2]");
         page.click("(//ion-segment-button[text()='No'])[3]");
 
         click(page,"ion-segment-button[value='M']");
@@ -73,7 +73,9 @@ public class ApplicationInfoSUPPage extends BaseClass {
 //        click(page,"//ion-button[contains(@class,'autocomplete-okay')]");
         clearAndEnterText(page,"input[name='zip']", ApplicationInfo2BrPrimaryApplicantzipcode);
         click(page,"//ion-button[contains(@class,'autocomplete-okay')]");
-        page.click("(//ion-segment-button[text()='Yes'])[4]");
+
+        page.locator("xpath=(//ion-segment-button[contains(., 'Yes')])[3]").click();
+//        page.click("(//ion-segment-button[text()='Yes'])[4]");
 
 //        enterText(page,"input[name='movedMonthYear']", "05/2020");
         clearAndEnterText(page,"input[name='movedMonthYear']", "05/2020");

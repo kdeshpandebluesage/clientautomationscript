@@ -8,16 +8,15 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.pages.*;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
+public class TwoBorr_3_Purchase_MI_LIONLOPLOS_Alliance {
     static Playwright playwright;
     static Browser browser;
     static Page page;
@@ -41,8 +40,9 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
     void
     testFormFill() throws IOException, InterruptedException {
         String loanNumber = null;
-//        page.navigate("https://sup-uat-lion.bluesageusa.com/apply/login");
-        page.navigate("https://sup-qa-lion.bluesageusa.com/apply/login");
+        page.navigate("https://mam-qa-lion.bluesagedlp.com/mam/apply/login");
+//        page.navigate("https://sup-qa-lion.bluesageusa.com/apply/login");
+//        page.navigate("https://sup-dev-lion.bluesageusa.com/apply/login");
 
 
       //  List<Map<String, String>> data = ExcelUtil.readExcel("src/main/resources/SupremeLIONLOPLOSData.xlsx");
@@ -57,10 +57,6 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
         for (Map<String, String> row : data) {
             new LoanPurposeSUPPage(page).loanpurposeform(row.get("LoanPurposePhoneNumber"));
         }
-
-//        for (Map<String, String> row : data) {
-//            new LoginVerificationPage(page).verification(row.get("LoanPurposePhoneNumber"));
-//        }
 
 //        for (Map<String, String> row : data) {
 //            new OtherInfoPage(page).OtherInfoform(row.get("RealtorCompanyName"),row.get("RealtorFirstName"),row.get("RealtorLastName"),row.get("RealtorEmail"),row.get("Realtorphonenumber") );

@@ -8,16 +8,15 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.pages.*;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
+public class TwoBorr_31_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
     static Playwright playwright;
     static Browser browser;
     static Page page;
@@ -41,8 +40,11 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
     void
     testFormFill() throws IOException, InterruptedException {
         String loanNumber = null;
+        //page.navigate("https://lion-bluesage-dev.firebaseapp.com/apply/loan_purpose");
+        // page.navigate("https://lion-bluesage-dev.firebaseapp.com/apply/loan_purpose");
 //        page.navigate("https://sup-uat-lion.bluesageusa.com/apply/login");
-        page.navigate("https://sup-qa-lion.bluesageusa.com/apply/login");
+        page.navigate("https://sup-uat-lion.bluesageusa.com/apply/login");
+//        page.navigate("https://sup-dev-lion.bluesageusa.com/apply/login");
 
 
       //  List<Map<String, String>> data = ExcelUtil.readExcel("src/main/resources/SupremeLIONLOPLOSData.xlsx");
@@ -59,10 +61,6 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
         }
 
 //        for (Map<String, String> row : data) {
-//            new LoginVerificationPage(page).verification(row.get("LoanPurposePhoneNumber"));
-//        }
-
-//        for (Map<String, String> row : data) {
 //            new OtherInfoPage(page).OtherInfoform(row.get("RealtorCompanyName"),row.get("RealtorFirstName"),row.get("RealtorLastName"),row.get("RealtorEmail"),row.get("Realtorphonenumber") );
 //        }
 
@@ -70,16 +68,7 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
             new PurchaseLoanPage(page).purchaseInfoform(row.get("Purchasezipcode"), row.get("PurchasepropertyType"), row.get("PurchaseLoanpurchasePrice"), row.get("Purchasedownpayment"));
         }
 
-//        for (Map<String, String> row : data) {
-//            new RefinancePropertyPage(page).RefiPropInfoform(row.get("Paddress"),row.get("Pcity"),
-//                    row.get("Pstate"),row.get("Pzip"),row.get("rphonenumber"),row.get("PropUsed"),row.get("CashOutAmt"));
-//        }
-//        for (Map<String, String> row : data) {
-//            new OtherInfoPage(page).OtherInfoform(row.get("AppFirstBrName"), row.get("AppLastBrName"),
-//                    row.get("AppFirstBRBOD"), row.get("Remail"), row.get("RPhonenumber"), row.get("movedMonthYear"),
-//                    row.get("SecBorrFirstBrName"), row.get("SecBorrLastBrName"), row.get("SecBorrFirstBRBOD"), row.get("SecBorrEmail"), row.get("SecBorrMobNumber"));
-//
-//        }
+
         for (Map<String, String> row : data) {
             new ApplicationInfoSUPPage(page).applicationInformation(row.get("ApplicationInfo2BrPrimaryApplicantFirstName"), row.get("ApplicationInfo2BrPrimaryApplicantMiddleName"),row.get("ApplicationInfo2BrPrimaryApplicantLastName"),
                     row.get("ApplicationInfo2BrPrimaryApplicantBOD"), row.get("ApplicationInfo2BrPrimaryApplicantMobNumber"), row.get("ApplicationInfo2BrPrimaryApplicantEmail"), row.get("ApplicationInfo2BrPrimaryApplicantAddressline"), row.get("ApplicationInfo2BrPrimaryApplicantCityName"),
@@ -158,16 +147,141 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
             new LOPPricingSUPPage(page).handleExceptionsIfNeeded();
            // new LOPPricingSUPPage(page).handleExceptionsIfNeeded(row.get("logLabel"));
         }
-//        for (Map<String, String> row : data) {
-//            new LOPAUSPage(page).lopAUSDU();
-//        }
-//
-//        for (Map<String, String> row : data) {
-//            new LOPComplianceEasePage(page).lopCE();
-//        }
-//        for (Map<String, String> row : data) {
-//            new LOPDocumentPage(page).lopInitial();
-//        }
+        for (Map<String, String> row : data) {
+            new LOPAUSPage(page).lopAUSDU();
+        }
+
+        for (Map<String, String> row : data) {
+            new LOPComplianceEasePage(page).lopCE();
+        }
+        for (Map<String, String> row : data) {
+            new LOPDocumentPage(page).lopInitial();
+        }
+        //LOS
+
+        page.navigate("https://sup-qa.bluesageusa.com/lp/#/login");
+
+        for (Map<String, String> row : data) {
+            new LOSLoanFoldersPage(page).addLoanFolderDetails(row.get("LoanFolderFilePath"));
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSProcessingInReview"));
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSBorrowerRelationshipsPage(page).addSpouseRelationship();
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSPropertyInsuranceInfoPage(page).navigateToPropertyInsurance();
+            new LOSPropertyInsuranceInfoPage(page).addInsuranceInfo();
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSLegalDescriptionPage(page).addLegalDescriptionDetails();
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanTermsPage(page).enterLoanTermsDetails();
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSLoanPricingPage(page).priceLoanAndHandleCOC();
+        }
+        for (Map<String, String> row : data) {
+            new LOSComplEasePage(page).runComplianceEaseWorkflow();
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSDocumentPackagePage(page).generateDocumentPackage(row.get("LOSDocPackageType"),row.get("LOSDocPackageDestination"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSComplAuditPage(page).performComplianceAudit();
+        }
+        for (Map<String, String> row : data) {
+            new LOSBorrConsentPage(page).provideBorrowerConsent();
+        }
+        for (Map<String, String> row : data) {
+            new LOSVendorServicesPage(page).orderVendorService(row.get("serviceType"),row.get("networkProvider"),row.get("serviceProviderText"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSUnderwritingSubmitted"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSUnderwritingReview"));
+        }
+
+        for (Map<String, String> row : data) {
+            new LOSCreditPage(page).orderCreditReport(row.get("ediProvider"),row.get("creditAgency"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSChecklistsPage(page).completeAllChecklistItems();
+        }
+        for (Map<String, String> row : data) {
+            new LOSEmploymentVerificationPage(page).verifyAllEmployments();
+        }
+        for (Map<String, String> row : data) {
+            new LOSIncomeVerificationPage(page).verifyAllIncomes();
+        }
+        for (Map<String, String> row : data) {
+            new LOSAssetVerificationPage(page).verifyAllAssets();
+        }
+        for (Map<String, String> row : data) {
+            new LOSLiabilityVerificationPage(page).verifyAllLiabilities();
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanConditionsPage(page).processLoanConditions();
+        }
+        for (Map<String, String> row : data) {
+            new LOSAUSPage(page).runAutomatedUnderwriting();
+        }
+        for (Map<String, String> row : data) {
+            new LOSUWDecisioningPage(page).makeDecision();
+        }
+        for (Map<String, String> row : data) {
+            new LOSClosFundScheduleLoanForClosingPage(page).scheduleLoanForClosing();
+        }
+        for (Map<String, String> row : data) {
+            new LOSDocumentPackagePage(page).generateDocumentPackage(row.get("LOSDocPackageType"),row.get("LOSDocPackageDestination"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSClosingSubmitted"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSClosingReview"));
+        }
+
+        //Funding
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSFundingReview"));
+        }
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSFundsDisbursed"));
+        }
+        //Shipping
+
+        //Post Closing
+
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSFundsDisbursed"));
+        }
+        // Post Closing - Docs Received
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSPostClosingDocsReceived"));
+        }
+        // Post Closing - In Process
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSPostClosingInReview"));
+        }
+        // Post Closing - Shipped
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSPostClosingShipped"));
+        }
+        // Final Action - Purchased
+        for (Map<String, String> row : data) {
+            new LOSLoanStatusPage(page).addLoanStatusDetails(row.get("LSFinalActionPurchased"));
+        }
+
 
     }
 

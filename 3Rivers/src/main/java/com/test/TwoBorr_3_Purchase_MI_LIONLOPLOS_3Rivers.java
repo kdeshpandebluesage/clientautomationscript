@@ -8,16 +8,15 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.pages.*;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
+public class TwoBorr_3_Purchase_MI_LIONLOPLOS_3Rivers {
     static Playwright playwright;
     static Browser browser;
     static Page page;
@@ -41,12 +40,13 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
     void
     testFormFill() throws IOException, InterruptedException {
         String loanNumber = null;
-//        page.navigate("https://sup-uat-lion.bluesageusa.com/apply/login");
-        page.navigate("https://sup-qa-lion.bluesageusa.com/apply/login");
+
+//        page.navigate("https://sup-qa-lion.bluesageusa.com/apply/login");
+      page.navigate("https://trcu-uat-lion.bluesagedlp.com/trcu/apply/login");
 
 
       //  List<Map<String, String>> data = ExcelUtil.readExcel("src/main/resources/SupremeLIONLOPLOSData.xlsx");
-        List<Map<String, String>> data = ExcelUtil.readExcelWithTC("src/main/resources/SupremeLIONLOPLOSData.xlsx","SUP_DSP_Sc3");
+        List<Map<String, String>> data = ExcelUtil.readExcelWithTC("src/main/resources/3RiversLIONLOPLOSData.xlsx","SUP_DSP_Sc3");
 //        List<Map<String, String>> data = ExcelUtil.readExcel("src/main/resources/testdata.xlsx");
         //   page.click("//ion-button[contains(@class, 'login') and contains(@class, 'button')]");
 
@@ -57,10 +57,6 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
         for (Map<String, String> row : data) {
             new LoanPurposeSUPPage(page).loanpurposeform(row.get("LoanPurposePhoneNumber"));
         }
-
-//        for (Map<String, String> row : data) {
-//            new LoginVerificationPage(page).verification(row.get("LoanPurposePhoneNumber"));
-//        }
 
 //        for (Map<String, String> row : data) {
 //            new OtherInfoPage(page).OtherInfoform(row.get("RealtorCompanyName"),row.get("RealtorFirstName"),row.get("RealtorLastName"),row.get("RealtorEmail"),row.get("Realtorphonenumber") );
@@ -81,13 +77,13 @@ public class TwoBorr_3_Purchase_DonnaLBurns_LIONLOPLOS_Supreme {
 //
 //        }
         for (Map<String, String> row : data) {
-            new ApplicationInfoSUPPage(page).applicationInformation(row.get("ApplicationInfo2BrPrimaryApplicantFirstName"), row.get("ApplicationInfo2BrPrimaryApplicantMiddleName"),row.get("ApplicationInfo2BrPrimaryApplicantLastName"),
+            new ApplicationInfo3RiversPage(page).applicationInformation(row.get("ApplicationInfo2BrPrimaryApplicantFirstName"), row.get("ApplicationInfo2BrPrimaryApplicantMiddleName"),row.get("ApplicationInfo2BrPrimaryApplicantLastName"),
                     row.get("ApplicationInfo2BrPrimaryApplicantBOD"), row.get("ApplicationInfo2BrPrimaryApplicantMobNumber"), row.get("ApplicationInfo2BrPrimaryApplicantEmail"), row.get("ApplicationInfo2BrPrimaryApplicantAddressline"), row.get("ApplicationInfo2BrPrimaryApplicantCityName"),
                     row.get("ApplicationInfo2BrPrimaryApplicantStateName"), row.get("ApplicationInfo2BrPrimaryApplicantzipcode"), row.get("ApplicationInfo2BrPrimaryApplicantRent"), row.get("ApplicationInfo2BrPrimaryApplicantMovedMonthYear"), row.get("ApplicationInfo2BrPrimaryApplicantCountry")
             );
         }
         for (Map<String, String> row : data) {
-            new ApplicationInfoSecondaryPage(page).applicationSecondaryInformation(row.get("ApplicationInfo2BrSecondaryApplicantFirstName"), row.get("ApplicationInfo2BrSecondaryApplicantMiddleName"), row.get("ApplicationInfo2BrSecondaryApplicantLastName"),
+            new ApplicationInfoSecondary3RiversPage(page).applicationSecondaryInformation(row.get("ApplicationInfo2BrSecondaryApplicantFirstName"), row.get("ApplicationInfo2BrSecondaryApplicantMiddleName"), row.get("ApplicationInfo2BrSecondaryApplicantLastName"),
                     row.get("ApplicationInfo2BrSecondaryApplicantBOD"), row.get("ApplicationInfo2BrSecondaryApplicantMobNumber"), row.get("ApplicationInfo2BrSecondaryApplicantEmail"), row.get("ApplicationInfo2BrSecondaryApplicantAddressline"), row.get("ApplicationInfo2BrSecondaryApplicantCityName"),
                     row.get("ApplicationInfo2BrSecondaryApplicantStateName"), row.get("ApplicationInfo2BrSecondaryApplicantzipcode"), row.get("ApplicationInfo2BrSecondaryApplicantRent"));
         }

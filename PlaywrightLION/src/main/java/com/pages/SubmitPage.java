@@ -1,8 +1,5 @@
 package com.pages;
 
-import com.microsoft.playwright.Locator;
-import com.test.TwoBorrPurchaseLoanTest;
-
 import java.io.IOException;
 
 public class SubmitPage extends BasePage {

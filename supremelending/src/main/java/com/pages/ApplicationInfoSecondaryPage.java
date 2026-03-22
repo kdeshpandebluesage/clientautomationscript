@@ -63,6 +63,7 @@ public class ApplicationInfoSecondaryPage extends BaseClass {
         System.out.println("Application Info screen is done.");
         page.locator("//ion-button[contains(@class,'save-continue')]").click();
 
+
         System.out.println("Other Info selection is done.");
     }
 }
