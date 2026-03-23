@@ -103,7 +103,7 @@ public class TwoBorr_2_sc2_Purchase_Portal_BSS {
             new LOPComplianceEasePage(page).lopComplianceEase();
         }
         for (Map<String, String> row : data) {
-            new LOPDocumentPage(page).generateInitialDisclosures(row.get("secondaryLienText"));
+            new LOPDocument(page).generateDocumentPackage(row.get("DocumentPackageType"), row.get("DocumentDestination"),row.get("LOPApplicationStatus"));
         }
     }
 
