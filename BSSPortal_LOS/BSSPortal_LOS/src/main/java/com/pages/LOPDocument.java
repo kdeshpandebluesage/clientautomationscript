@@ -1,6 +1,7 @@
 package com.pages;
 
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
 public class LOPDocument extends BaseClass {
@@ -62,18 +63,34 @@ public class LOPDocument extends BaseClass {
 
         //Doc Destination - All checkboxes are default selected
         page.click(docDestinationDropdown);
-        page.locator(".x-boundlist-item >> text=\"" + destination + "\"").click();
+//        page.locator(".x-boundlist-item >> text=\"" + destination + "\"").click();
 
+        Locator eSignItem = page.locator("li.x-boundlist-item").filter(new Locator.FilterOptions().setHasText(destination));
+
+// 3. Robust Wait: Wait for it to be visible (max 10s)
+        eSignItem.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(10000));
+
+// 4. Force Click: BlueSage animations can sometimes block regular clicks
+        eSignItem.click(new Locator.ClickOptions().setForce(true));
+
+//        page.locator("li.x-boundlist-item:has-text('" + destination + "')").click();
         //Adhoc Details
         handleAdhocDetailsIfNeeded();
-
-
 
         System.out.println("✅ Successfully completed '" + packageType + "' Document Package workflow.");
 
         //Update Loan Status
         page.reload();
-        click(applicationLink);
+        page.waitForTimeout(3000);
+        Locator applicationMenu = page.locator("span:has-text('Application')").first();
+
+        // 2. Wait for it to be visible
+        applicationMenu.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+
+
+        // 3. HOVER is critical here. It triggers the ExtJS dropdown to render in the DOM.
+        applicationMenu.hover();
+        applicationMenu.dispatchEvent("click");
         page.waitForTimeout(2000);
         click(loanStatusLink);
         page.waitForTimeout(4000);
@@ -82,14 +99,19 @@ public class LOPDocument extends BaseClass {
         //Status
         String newStatusdropdownToggleLocator = "//input[@name='newStatus']/../following-sibling::td/div";
         page.click(newStatusdropdownToggleLocator);
-        page.locator(".x-boundlist-item >> text=\"" + ApplStatus + "\"").click();
+        page.waitForSelector(".x-boundlist-list-ct", new Page.WaitForSelectorOptions().setState(WaitForSelectorState.VISIBLE));
+//        selectAngularDropdown(page, "//input[@name='newStatus']/../following-sibling::td/div", "//li[text()='0320 - Setup - In Process']");
+//        page.locator(".x-boundlist-item >> text=\"" + ApplStatus + "\"").click();
+        page.locator("li.x-boundlist-item:has-text('" + ApplStatus + "')").click();
 
         System.out.println("✅ LOP Loan Status -- '" + ApplStatus);
         click(loanStatusSaveButton);
         page.waitForTimeout(2000);
+//        getLoanNumber();
         //Logout LOP
         page.locator("a[data-selenium-id='btnUser']").click();
         page.locator("//span[text()='Log Out']").click();
+
     }
     /**
      * Checks for and handles the "Adhoc Data" pop-up if it appears.
@@ -106,19 +128,9 @@ public class LOPDocument extends BaseClass {
             System.out.println("Doc Pkg Initial Disclosure Sent");
 
         }
+
     }
-    /**
-     * Executes the specific workflow for generating the "Closing" document package.
-     * This is a convenience method that calls the generic generateDocumentPackage method
-     * with predefined parameters for closing documents.
-     */
-//    public void generateClosingDocumentPackage() {
-//        System.out.println("Generating the 'Closing' document package...");
-//
-//        // This reuses the existing logic with specific parameters for the closing package.
-//        // We assume the package type is "Closing" and destination is "Print to PDF".
-//        generateDocumentPackage("Closing", "Print to PDF");
-//    }
+
 
 
     /**
@@ -134,17 +146,19 @@ public class LOPDocument extends BaseClass {
             click(docResultWindowCloseButton);
         }
     }
+    public String getLoanNumber() {
+        // Locator based on the span structure seen in your DevTools screenshot
+        // Using a contains check for the ID or the specific class used for the title
+        String loanNumberSelector = "span[id*='secondaryNavTitleCopy-btnInnerEl']";
 
-//    public void lopInitial() {
-//        page.click("//span[text()='Documents']");
-//        page.locator("//span[text()='Packages']").waitFor(new Locator.WaitForOptions()
-//                .setState(WaitForSelectorState.VISIBLE));
-//        page.click("//span[text()='Packages']");
-//        String DocumentTypeLocator = "(//input[contains(@name,'combocustom')]/../following-sibling::td/div)[1]";
-//        String hoverTargetSelector = "//li[text()='Initial Disclosure (Sales)']";
-//        page.click(DocumentTypeLocator);
-//        selectAngularDropdownOption(page, DocumentTypeLocator, hoverTargetSelector);
-//        page.click("//span[text()='Submit Order']");
-//        System.out.println("Doc Pkg Initial Disclosure Sent");
-//    }
+        // Wait for the element to be visible and have text
+        page.waitForSelector(loanNumberSelector);
+
+        // Get the text content (e.g., "1300004567")
+        String loanNumber = page.innerText(loanNumberSelector).trim();
+
+        System.out.println("Retrieved Loan Number: " + loanNumber);
+        return loanNumber;
+    }
+
 }
