@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="com.listeners.ExtentReportListener" />
+    </listeners>
+    <test name="QA Loans">
+        <classes>
+            <class name="com.test.TwoBorr_2_Purchase_Portal_BSS"/>
+            <class name="com.test.TwoBorr_2_sc1Purchase_Portal_BSS"/>
+<!--            <class name="com.test.TwoBorr_2_CreditAUS"/>-->
+<!--            <class name="com.test.TwoBorr_2_Refinance_RichardJCoss_LIONLOPLOS_Supreme"/>-->
+
+<!--            <class name="com.test.TwoBorr_26_Refinance_MariselaDOleary_LIONLOPLOS_Supreme"/>-->
+<!--            <class name="com.test.TwoBorr_27_Refinance_EnriqueNWest_LIONLOPLOS_Supreme"/>-->
+        </classes>
+    </test>
+</suite>
