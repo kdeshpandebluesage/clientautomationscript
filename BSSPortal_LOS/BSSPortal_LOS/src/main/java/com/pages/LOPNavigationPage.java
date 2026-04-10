@@ -16,7 +16,7 @@ public class LOPNavigationPage extends BaseClass {
 // 1. Identify the 'Application' tab
         waitForWorkToComplete();
 
-        page.waitForTimeout(1000);
+        page.waitForTimeout(2500);
         Locator applicationMenu = page.locator("span:has-text('Application')").first();
 
         // 2. Wait for it to be visible

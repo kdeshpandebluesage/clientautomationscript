@@ -3,7 +3,7 @@ package com.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class LOPApplicationPage extends BasePage_Old {
+public class LOPApplicationPage extends BaseClass {
     public LOPApplicationPage(com.microsoft.playwright.Page page) {
         super(page);
     }

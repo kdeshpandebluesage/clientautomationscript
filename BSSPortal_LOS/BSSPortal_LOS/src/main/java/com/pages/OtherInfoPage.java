@@ -2,7 +2,7 @@ package com.pages;
 
 import java.io.IOException;
 
-public class OtherInfoPage extends BasePage_Old {
+public class OtherInfoPage extends BaseClass {
     public OtherInfoPage(com.microsoft.playwright.Page page) {
         super(page);
     }

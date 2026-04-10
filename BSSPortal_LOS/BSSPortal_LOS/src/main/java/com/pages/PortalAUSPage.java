@@ -1,6 +1,6 @@
 package com.pages;
 
-public class PortalAUSPage extends BasePage_Old {
+public class PortalAUSPage extends BaseClass {
     public PortalAUSPage(com.microsoft.playwright.Page page) {
         super(page);
     }

@@ -4,7 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class LOPLoanSourcePage extends BasePage_Old {
+public class LOPLoanSourcePage extends BaseClass {
     public LOPLoanSourcePage(com.microsoft.playwright.Page page) {
         super(page);
     }

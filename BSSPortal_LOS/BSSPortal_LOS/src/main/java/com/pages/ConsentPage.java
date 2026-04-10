@@ -5,7 +5,7 @@ import com.microsoft.playwright.options.WaitForSelectorState;
 
 import java.io.IOException;
 
-public class ConsentPage extends BasePage_Old {
+public class ConsentPage extends BaseClass {
     public ConsentPage(com.microsoft.playwright.Page page) {
         super(page);
     }

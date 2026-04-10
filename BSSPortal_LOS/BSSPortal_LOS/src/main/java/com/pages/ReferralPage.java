@@ -2,7 +2,7 @@ package com.pages;
 
 import java.io.IOException;
 
-public class ReferralPage extends BasePage_Old {
+public class ReferralPage extends BaseClass {
     public ReferralPage(com.microsoft.playwright.Page page) {
         super(page);
     }

@@ -2,7 +2,7 @@ package com.pages;
 
 import java.io.IOException;
 
-public class SubmitLOPPage extends BasePage_Old {
+public class SubmitLOPPage extends BaseClass {
     public SubmitLOPPage(com.microsoft.playwright.Page page) {
         super(page);
     }
