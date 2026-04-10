@@ -43,8 +43,9 @@ public class TwoBorr_2_Purchase_LIONLOPLOS_Alliance {
 
 //        page.navigate("https://allcu-qa-lion.bluesagedlp.com/allcu/apply/login");
 //        page.navigate("https://mam-qa-lion.bluesagedlp.com/mam/apply/login");
-        page.navigate("https://trcu-qa-lion.bluesagedlp.com/trcu/apply/login");
-//        page.navigate("https://sup-dev-lion.bluesageusa.com/apply/login");
+        page.navigate("https://allcu-uat-lion.bluesagedlp.com/allcu");
+
+
 
 
       //  List<Map<String, String>> data = ExcelUtil.readExcel("src/main/resources/SupremeLIONLOPLOSData.xlsx");

@@ -5,8 +5,8 @@
     </listeners>
     <test name="QA Loans">
         <classes>
-            <class name="com.test.TwoBorr_2_Purchase_Portal_BSS"/>
             <class name="com.test.TwoBorr_2_sc1Purchase_Portal_BSS"/>
+            <class name="com.test.TwoBorr_2_sc2_Purchase_Portal_BSS"/>
 <!--            <class name="com.test.TwoBorr_2_CreditAUS"/>-->
 <!--            <class name="com.test.TwoBorr_2_Refinance_RichardJCoss_LIONLOPLOS_Supreme"/>-->
 
