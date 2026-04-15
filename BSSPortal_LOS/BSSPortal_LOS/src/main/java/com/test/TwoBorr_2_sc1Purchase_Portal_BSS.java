@@ -48,6 +48,8 @@ public class TwoBorr_2_sc1Purchase_Portal_BSS {
         ExtentHtmlReporter reporter = new ExtentHtmlReporter("test-output/extent-report.html");
         extent = new ExtentReports();
         extent.attachReporter(reporter);
+        test = extent.createTest("twoBorrPurchaseLoanTest", "Validating One Borrower Purchase Loan Application");
+
     }
 
     @Test
